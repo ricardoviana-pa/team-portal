@@ -18,7 +18,7 @@
             --pa-border-hover: rgba(0,0,0,0.14);
             --pa-text: #1a1a1f;
             --pa-text-sec: rgba(0,0,0,0.55);
-            --pa-text-muted: rgba(0,0,0,0.3);
+            --pa-text-muted: rgba(0,0,0,0.45);
             --radius: 14px;
             --radius-sm: 10px;
             --ease: all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
@@ -94,7 +94,7 @@
         .mvv-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:14px}
         .mvv-card.missao .mvv-label{color:var(--pa-green)}
         .mvv-card.visao .mvv-label{color:var(--pa-gold)}
-        .mvv-card.valores .mvv-label{color:var(--pa-text-muted)}
+        .mvv-card.valores .mvv-label{color:var(--pa-text-sec)}
         .mvv-text{font-size:15px;color:var(--pa-text-sec);line-height:1.85}
         .valor-item{display:flex;align-items:flex-start;gap:12px;padding:14px 0;font-size:14px;color:var(--pa-text-sec);line-height:1.6}
         .valor-item+.valor-item{border-top:1px solid var(--pa-border)}
@@ -335,7 +335,7 @@
     function N(id,n,r,d,f,o,ch,x){return{id,name:n,role:r,dept:d,funcs:f,objs:o,children:ch||[],...(x||{})}}
 
         const emanuel=N('emanuel','Emanuel Riboira','Executive Assistant','DAF',
-      ['Assistência executiva 360º.','Suporte directo Teresa, Bruno e Gestão.'],
+      ['Assistência executiva 360º.','Suporte direto a Teresa, Bruno e Gestão.'],
       ['To run the extra mile.'],[],{dual:true});
     const bruno=N('bruno','Bruno Monteiro','Finance Manager','DAF',
       ['Reporting financeiro (Primavera).','Cashflow, tesouraria e controlo financeiro.','Revenue reports por propriedade.','Pagamentos a proprietários.'],
@@ -348,7 +348,7 @@
       ['100% propriedades prontas a tempo.','Zero falhas de qualidade.'],[],{small:true});
     const ni=mkClean('ni','Ni Esteves'),daniela=mkClean('daniela','Daniela');
     const mabilda=N('mabilda','Mabilda','Warehouse & Cleaning','Warehouse',
-      ['Kits de roupa, gestão de inventário e arrumação lavandaria.','Suporte na limpeza do escritório.'],
+      ['Kits de roupa, gestão de inventário e arrumação da lavandaria.','Suporte na limpeza do escritório.'],
       ['100% stock reposto a tempo.','Zero falhas de qualidade.'],[],{small:true});
     const cleaning=N('cleaning','Cleaning Team','Cleaning Operations','Cleaning',
       ['Limpeza e preparação de propriedades.','Reporte de danos.','Reposição de amenities.','Gestão de warehouse.'],
@@ -366,7 +366,7 @@
       ['Suporte a hóspedes pré/durante/pós estadia.','Gestão de mensagens OTA.','Resolução de problemas operacionais.','Controlo de reviews.'],
       ['Tempo de resposta <1h.','Taxa de resolução >95%.'],[]);
     const susana=N('susana','Susana Queirós','Head of Field Operations','Operations',
-      ['Supervisão e liderança operações terreno.','Elevar a qualidade dos activos.','Gestão das equipas terreno, concierge, limpeza.','Execução de SOP e SLA operacionais.'],
+      ['Supervisão e liderança operações terreno.','Elevar a qualidade dos ativos.','Gestão das equipas terreno, concierge, limpeza.','Execução de SOP e SLA operacionais.'],
       ['NPS acima de 90.','Zero falhas repetidas nas propriedades.','Onboarding nova propriedade em <72h.'],
       [tomas,joana,jporto,samuel,cleaning]);
     const nuno=N('nuno','Nuno Pereira','Fractional CFO','DAF',
@@ -389,10 +389,10 @@
       ['Liderança da equipa comercial e reservas.','Estratégia de crescimento de receita.','Gestão de canais B2B e OTA.','Reporting comercial ao CEO.'],
       ['10+ novas propriedades onboarded/mês.','Ocupação média >80%.','RevPAN +20% vs mercado.'],
       [dlima],{pushDown:true,hiring:true});
-    const legal=N('legal','Legal','Externo','Legal',
+    const legal=N('legal','André Feiteiro','Assessor Legal','Legal',
       ['Assessoria jurídica e contratual.','Compliance e regulamentação.','Suporte a operações e expansão.'],
       ['Zero riscos legais.','Contratos revistos em <48h.'],[],{external:true});
-    const marketing=N('marketing','Marketing','Externo','Marketing',
+    const marketing=N('marketing','Fábio Freitas','Marketing Manager','Marketing',
       ['Estratégia de marca e comunicação.','Gestão de canais digitais e conteúdo.','Performance marketing e analytics.'],
       ['Brand awareness crescente.','ROI de marketing positivo.'],[],{external:true});
     const ricardo=N('ricardo','Ricardo Viana','CEO & Founder','Leadership',
