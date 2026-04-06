@@ -150,6 +150,7 @@
         .org-card:hover{border-color:var(--pa-border-hover);box-shadow:0 4px 14px rgba(0,0,0,0.1);transform:translateY(-2px)}
         .org-card.selected{border-color:var(--pa-green);box-shadow:0 0 0 2px rgba(11,69,65,0.15)}
         .org-card.hiring{border:1.5px dashed var(--pa-gold)}
+        .org-card.external{border:1.5px dashed rgba(0,0,0,0.25);opacity:0.85}
         .org-card-dept{display:inline-block;font-size:7.5px;text-transform:uppercase;letter-spacing:1.2px;font-weight:700;padding:3px 10px;border-radius:100px;color:#fff;margin-bottom:6px}
         .org-card-name{font-weight:700;font-size:12.5px;line-height:1.3;margin-bottom:2px}
         .org-card-role{font-size:9.5px;font-style:italic;color:var(--pa-text-muted);line-height:1.3}
@@ -176,6 +177,8 @@
         .org-detail-name{font-size:26px;font-weight:800;color:#fff;margin-bottom:2px;letter-spacing:-0.5px}
         .org-detail-role{font-size:13px;font-style:italic;color:rgba(255,255,255,0.75)}
         .org-detail-email{font-size:11px;color:rgba(255,255,255,0.65);margin-top:4px}
+        .org-detail-external{font-size:10px;color:rgba(255,255,255,0.7);margin-top:6px;padding:3px 10px;background:rgba(255,255,255,0.12);border-radius:10px;display:inline-block;letter-spacing:.5px;text-transform:uppercase}
+        .org-detail-reporta{padding:14px 20px 10px;font-size:13px;color:#333;border-bottom:1px solid rgba(0,0,0,0.06)}
         .org-detail-body{padding:0 28px 60px;background:var(--pa-card);color:var(--pa-text)}
         .org-detail-block{background:#fafaf8;border:1px solid var(--pa-border);border-radius:10px;padding:20px 22px;margin-bottom:14px;position:relative;overflow:hidden}
         .org-detail-block::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:4px 0 0 4px}
@@ -325,7 +328,7 @@
     });
 
     /* ORG CHART DATA */
-    const DC={Board:'#1a1a1a',DAF:'#2e4a3e',Leadership:'#0B4541',Operations:'#1a5c58',Reservations:'#2d4a6e',Commercial:'#7a3d6e',Cleaning:'#7a6020',Hiring:'#C9A84C'};
+    const DC={Board:'#1a1a1a',DAF:'#2e4a3e',Leadership:'#0B4541',Operations:'#1a5c58',Reservations:'#2d4a6e',Commercial:'#7a3d6e',Cleaning:'#7a6020',Warehouse:'#8a6830',Hiring:'#C9A84C',Legal:'#4a4a6e',Marketing:'#6e3a4a'};
 
     const CARD_W=148, CARD_H=80, CARD_H_SM=56, CARD_W_SM=100, H_GAP=16, V_GAP=44, PUSH_EXTRA=64;
 
@@ -389,7 +392,13 @@
     const ricardo=N('ricardo','Ricardo Viana','CEO & Founder','Leadership',
       ['Visão estratégica e expansão.','Cultura e liderança de elite.','Aquisição de propriedades próprias.','Relação parceiros e investidores.'],
       ['Escalar para 10M revenue em 2 anos.','+100 propriedades premium e luxo sob gestão.'],
-      [nuno,diogo,hsales],{email:'ricardo@portugalactive.pt'});
+      [nuno,diogo,hsales,legal,marketing],{email:'ricardo@portugalactive.pt'});
+    const legal=N('legal','Legal','Externo','Legal',
+      ['Assessoria jurídica e contratual.','Compliance e regulamentação.','Suporte a operações e expansão.'],
+      ['Zero riscos legais.','Contratos revistos em <48h.'],[],{external:true});
+    const marketing=N('marketing','Marketing','Externo','Marketing',
+      ['Estratégia de marca e comunicação.','Gestão de canais digitais e conteúdo.','Performance marketing e analytics.'],
+      ['Brand awareness crescente.','ROI de marketing positivo.'],[],{external:true});
     const carlos=N('carlos','Carlos Palhares','Sócio Não Executivo','Board',
       ['Supervisão estratégica.','Governance e proteção do investimento.','Advisory ao CEO.'],
       ['Retorno sobre investimento.','Crescimento sustentável do EBITDA.','Alinhamento estratégico.'],[]);
@@ -399,8 +408,15 @@
     function flatN(n){allNodes[n.id]=n;(n.children||[]).forEach(flatN)}
     [carlos,ricardo].forEach(flatN);
 
+    /* FIND PARENT (reports to) */
+    const parentOf={};
+    function mapParents(n){(n.children||[]).forEach(c=>{parentOf[c.id]=n;mapParents(c)})}
+    [ricardo].forEach(mapParents);
+    /* Emanuel dual-reports to Bruno & Teresa */
+    parentOf['emanuel']={id:'dual',name:'Bruno Monteiro & Teresa Ferrador',role:'',dept:'DAF'};
+
     /* LEGEND */
-    (()=>{const el=document.getElementById('orgLegend');['Board','Leadership','DAF','Operations','Commercial','Reservations','Cleaning','Hiring'].forEach(d=>{el.innerHTML+=`<div class="org-legend-item"><div class="org-legend-dot" style="background:${DC[d]}"></div>${d}</div>`})})();
+    (()=>{const el=document.getElementById('orgLegend');['Board','Leadership','DAF','Operations','Commercial','Reservations','Cleaning','Warehouse','Legal','Marketing','Hiring'].forEach(d=>{el.innerHTML+=`<div class="org-legend-item"><div class="org-legend-dot" style="background:${DC[d]}"></div>${d}</div>`})})();
 
     /* TREE LAYOUT */
     function layoutTree(){
@@ -464,7 +480,7 @@
 
     /* RENDER CARD */
     function cardHTML(node){
-      const cls=['org-card'];if(node.small)cls.push('small');if(node.hiring)cls.push('hiring');if(selectedId===node.id)cls.push('selected');
+      const cls=['org-card'];if(node.small)cls.push('small');if(node.hiring)cls.push('hiring');if(node.external)cls.push('external');if(selectedId===node.id)cls.push('selected');
       const deptLabel=node.dept==='Hiring'?'A Contratar':node.dept;
       const w=node.small?CARD_W_SM:CARD_W;
       const h=node.small?CARD_H_SM:CARD_H;
@@ -529,7 +545,7 @@
     function selectNode(id){if(selectedId===id){closeDetail();return}selectedId=id;renderTree();showDetail(id);}
     function closeDetail(){selectedId=null;document.getElementById('orgDetail').classList.remove('open');document.getElementById('orgOverlay').classList.remove('open');renderTree();}
     function showDetail(id){
-      const n=allNodes[id];if(!n)return;const c=DC[n.dept]||'#333';const d=document.getElementById('orgDetail');let h=`<div class="org-detail-header" style="background:${c}"><button class="org-detail-back" onclick="closeDetail()">&#8592; Voltar</button>`;if(n.partner)h+=`<div class="org-detail-partner">★ Representante dos Sócios</div><br>`;else h+=`<div style="height:36px"></div>`;h+=`<div class="org-detail-dept" style="background:rgba(255,255,255,0.15)">${n.dept==='Hiring'?'A Contratar':n.dept}</div><div class="org-detail-name">${n.name}</div><div class="org-detail-role">${n.role}</div>`;if(n.email)h+=`<div class="org-detail-email">${n.email}</div>`;h+=`</div><div class="org-detail-body"><div class="org-detail-block f"><h3>Funções</h3>`;n.funcs.forEach(f=>{h+=`<div class="org-detail-item"><div class="org-detail-bullet" style="background:#0B4541"></div><span>${f}</span></div>`});h+=`</div><div class="org-detail-block o"><h3>Objetivos</h3>`;n.objs.forEach(o=>{h+=`<div class="org-detail-item"><div class="org-detail-bullet" style="background:#C9A84C"></div><span>${o}</span></div>`});h+=`</div></div>`;d.innerHTML=h;d.scrollTop=0;d.classList.add('open');document.getElementById('orgOverlay').classList.add('open');
+      const n=allNodes[id];if(!n)return;const c=DC[n.dept]||'#333';const d=document.getElementById('orgDetail');let h=`<div class="org-detail-header" style="background:${c}"><button class="org-detail-back" onclick="closeDetail()">&#8592; Voltar</button>`;if(n.partner)h+=`<div class="org-detail-partner">★ Representante dos Sócios</div><br>`;else h+=`<div style="height:36px"></div>`;h+=`<div class="org-detail-dept" style="background:rgba(255,255,255,0.15)">${n.dept==='Hiring'?'A Contratar':n.dept}</div><div class="org-detail-name">${n.name}</div><div class="org-detail-role">${n.role}</div>`;if(n.email)h+=`<div class="org-detail-email">${n.email}</div>`;if(n.external)h+=`<div class="org-detail-external">Departamento Externo</div>`;h+=`</div><div class="org-detail-body">`;const par=parentOf[n.id];if(par)h+=`<div class="org-detail-reporta"><span style="opacity:.6">Reporta a</span> <strong>${par.name}</strong></div>`;h+=`<div class="org-detail-block f"><h3>Funções</h3>`;n.funcs.forEach(f=>{h+=`<div class="org-detail-item"><div class="org-detail-bullet" style="background:#0B4541"></div><span>${f}</span></div>`});h+=`</div><div class="org-detail-block o"><h3>Objetivos</h3>`;n.objs.forEach(o=>{h+=`<div class="org-detail-item"><div class="org-detail-bullet" style="background:#C9A84C"></div><span>${o}</span></div>`});h+=`</div></div>`;d.innerHTML=h;d.scrollTop=0;d.classList.add('open');document.getElementById('orgOverlay').classList.add('open');
     }
     document.getElementById('orgOverlay').addEventListener('click',closeDetail);
 
