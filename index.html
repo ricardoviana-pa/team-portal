@@ -248,6 +248,7 @@
         .comp-confirm-msg{font-size:18px;font-weight:600;text-align:center;margin-bottom:8px}
         .comp-confirm-sub{font-size:14px;color:var(--pa-text-sec);text-align:center;margin-bottom:40px;line-height:1.7}
         .comp-actions{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:32px}
+        .comp-counter{font-size:11px;font-weight:600;color:var(--pa-green);letter-spacing:0.5px;margin-top:4px;display:inline-block}
         @media(max-width:768px){.comp-level-grid{grid-template-columns:1fr}.comp-mural{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}}
         .index-card.card-dev{opacity:0.38;pointer-events:none;border-style:dashed}
 
@@ -289,7 +290,7 @@
             <a href="#agenda" class="index-card fi"><div class="ic-num">04</div><div class="ic-title">Agenda & Reuniões</div><div class="ic-desc">Daily kick-offs, one-on-ones, town halls e reports mensais.</div><div class="ic-btn">Explorar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
             <a href="#sistemas" class="index-card fi"><div class="ic-num">05</div><div class="ic-title">Sistemas & Ferramentas</div><div class="ic-desc">Asana, Gmail, Calendar, Notion e Slack.</div><div class="ic-btn">Explorar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
             <a href="#resumo" class="index-card fi"><div class="ic-num">06</div><div class="ic-title">Resumo & Princípios</div><div class="ic-desc">Reuniões, sistemas e comunicação — os princípios que definem a nossa forma de trabalhar.</div><div class="ic-btn">Explorar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
-            <a href="#compromisso" class="index-card fi"><div class="ic-num">07</div><div class="ic-title">Declaração de Compromisso</div><div class="ic-desc">Compromisso pessoal com a cultura, comportamento e standards da equipa. <span id="compCounter" class="comp-counter"></span></div><div class="ic-btn">Explorar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+            <a href="#compromisso" class="index-card fi"><div class="ic-num">07</div><div class="ic-title">Declaração de Compromisso</div><div class="ic-desc">Compromisso pessoal com a cultura, comportamento e standards da equipa.<br><span id="compCounter" class="comp-counter"></span></div><div class="ic-btn">Explorar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
             <div class="index-card card-dev fi"><div class="ic-num">08</div><div class="ic-title">Brevemente</div><div class="ic-desc">Em desenvolvimento.</div></div>
         </div>
         <div class="index-footer fi">Portugal Active &bull; Abril 2026</div>
@@ -798,7 +799,7 @@
         el.innerHTML=compSigs.map(function(s){return '<div class="comp-sig-card '+(s.level==='manager'?'mgr':'tm')+'"><div class="comp-sig-name">'+s.name+'</div><div class="comp-sig-level">'+(s.level==='manager'?'Manager / L\u00edder':'Team Member')+'</div><div class="comp-sig-date">'+s.date+' &middot; '+s.count+' compromissos</div></div>'}).join('');
       });
       var counter=document.getElementById('compCounter');
-      if(counter&&compSigs.length)counter.textContent=compSigs.length+' assinatura'+(compSigs.length!==1?'s':'');
+      if(counter)counter.textContent=compSigs.length+'/16 assinaram';
     }
 
     document.querySelectorAll('#compromisso .fi').forEach(function(el){obs.observe(el)});
