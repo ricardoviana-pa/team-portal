@@ -331,68 +331,68 @@
 
     function N(id,n,r,d,f,o,ch,x){return{id,name:n,role:r,dept:d,funcs:f,objs:o,children:ch||[],...(x||{})}}
 
-    const emanuel=N('emanuel','Emanuel Ribeiro','Executive Assistant','DAF',
-      ['Assistente executivo do DAF','Suporte a Bruno e Teresa','Coordenação de reuniões e follow-ups','Gestão de documentação administrativa'],
-      ['Zero missings em agenda','Follow-ups executados em 24h'],[],{dual:true});
+        const emanuel=N('emanuel','Emanuel Riboira','Executive Assistant','DAF',
+      ['Assistência executiva 360º.','Suporte directo Teresa, Bruno e Gestão.'],
+      ['To run the extra mile.'],[],{dual:true});
     const bruno=N('bruno','Bruno Monteiro','Finance Manager','DAF',
-      ['Reporting financeiro (Primavera)','Cash flow e tesouraria','Revenue reports por propriedade','Pagamentos a proprietários'],
-      ['Zero erros de reconciliação','Reports entregues até dia 5'],[emanuel]);
+      ['Reporting financeiro (Primavera).','Cashflow, tesouraria e controlo financeiro.','Revenue reports por propriedade.','Pagamentos a proprietários.'],
+      ['Zero erros de reconciliação.','Reports entregues até dia 5.'],[emanuel]);
     const teresa=N('teresa','Teresa Ferrador','HR & Office Manager','DAF',
-      ['Recrutamento e onboarding','Gestão de contratos e documentação','Cultura e bem-estar da equipa','Office management'],
-      ['Time-to-hire <30 dias','100% documentação legal em dia','Turnover <15%'],[]);
+      ['Co-Recrutamento, onboarding e acompanhamento de equipa.','Gestão de contratos e documentação.','Cultura e bem-estar da equipa.','Office management.'],
+      ['An happy team.','100% documentação legal em dia.','Turnover <15%.'],[]);
     const mkClean=(id,nm)=>N(id,nm,'Cleaning','Cleaning',
-      ['Limpeza e preparação de propriedades','Reporte de danos','Reposição de amenities'],
-      ['100% propriedades prontas a tempo','Zero falhas de qualidade'],[],{small:true});
+      ['Limpeza e preparação de propriedades.','Reporte de danos.','Reposição de amenities.'],
+      ['100% propriedades prontas a tempo.','Zero falhas de qualidade.'],[],{small:true});
     const ni=mkClean('ni','Ni Esteves'),daniela=mkClean('daniela','Daniela');
-    const mabilda=N('mabilda','Mabilda','Warehouse & Cleaning','Cleaning',
-      ['Gestão de warehouse e stock','Limpeza e preparação de propriedades','Reposição de amenities','Controlo de inventário'],
-      ['100% stock reposto a tempo','Zero falhas de qualidade'],[],{small:true});
+    const mabilda=N('mabilda','Mabilda','Warehouse & Cleaning','Warehouse',
+      ['Kits de roupa, gestão de inventário e arrumação lavandaria.','Suporte na limpeza do escritório.'],
+      ['100% stock reposto a tempo.','Zero falhas de qualidade.'],[],{small:true});
     const cleaning=N('cleaning','Cleaning Team','Cleaning Operations','Cleaning',
-      ['Limpeza e preparação de propriedades','Reporte de danos','Reposição de amenities','Gestão de warehouse'],
-      ['100% propriedades prontas a tempo','Zero falhas de qualidade'],[ni,daniela,mabilda]);
+      ['Limpeza e preparação de propriedades.','Reporte de danos.','Reposição de amenities.','Gestão de warehouse.'],
+      ['100% propriedades prontas a tempo.','Zero falhas de qualidade.'],[ni,daniela,mabilda]);
     const tomas=N('tomas','Tomás Matos','Manager Field Ops','Operations',
-      ['Gestão diária de equipas de terreno','Inspeções de qualidade pós-limpeza','Coordenação de fornecedores e manutenção','Reporte de ocorrências'],
-      ['100% propriedades prontas a tempo','SLA de manutenção <4h','Zero reclamações de limpeza'],[]);
+      ['Gestão diária de equipas de terreno.','Inspeções de qualidade pós-limpeza.','Coordenação de fornecedores e manutenção.','Reporte imediato de ocorrências.','Knowledge Base Support creation and update.'],
+      ['100% propriedades prontas a tempo.','SLA de manutenção <4h.','Zero reclamações de limpeza.'],[]);
     const joana=N('joana','Joana Ferreira','Owners Account Manager','Operations',
-      ['Gestão de relação com proprietários','Reporting de performance por propriedade','Onboarding de novos proprietários','Coordenação de expectativas e standards'],
-      ['100% proprietários satisfeitos','Reporting mensal entregue','Zero churn de proprietários'],[]);
+      ['Gestão de excelência com proprietários.','Reporting de performance por propriedade.','Onboarding e acompanhamento de novos proprietários.','Coordenação de expectativas e standards.'],
+      ['100% proprietários satisfeitos.','Reporting mensal entregue.','Zero churn de proprietários.'],[]);
     const jporto=N('jporto','João Porto','Customer Support','Operations',
-      ['Suporte a hóspedes pré/durante/pós-estadia','Gestão de mensagens OTA','Resolução de problemas operacionais'],
-      ['Tempo de resposta <1h','Taxa de resolução >95%'],[]);
+      ['Suporte a hóspedes pré/durante/pós estadia.','Gestão de mensagens OTA.','Resolução de problemas operacionais.','Controlo de reviews.'],
+      ['Tempo de resposta <1h.','Taxa de resolução >95%.'],[]);
     const samuel=N('samuel','Samuel Rodrigues','Customer Support','Operations',
-      ['Suporte a hóspedes pré/durante/pós estadia','Gestão de mensagens OTA','Resolução de problemas operacionais'],
-      ['Tempo de resposta <1h','Taxa de resolução >95%'],[]);
+      ['Suporte a hóspedes pré/durante/pós estadia.','Gestão de mensagens OTA.','Resolução de problemas operacionais.','Controlo de reviews.'],
+      ['Tempo de resposta <1h.','Taxa de resolução >95%.'],[]);
     const susana=N('susana','Susana Queirós','Head of Field Operations','Operations',
-      ['Supervisão de operações de campo','Qualidade e standards das propriedades','Gestão da equipa de field, concierge e limpeza','Processos e SLAs operacionais'],
-      ['NPS acima de 90','Zero falhas repetidas nas propriedades','Onboarding nova propriedade em <72h'],
+      ['Supervisão e liderança operações terreno.','Elevar a qualidade dos activos.','Gestão das equipas terreno, concierge, limpeza.','Execução de SOP e SLA operacionais.'],
+      ['NPS acima de 90.','Zero falhas repetidas nas propriedades.','Onboarding nova propriedade em <72h.'],
       [tomas,joana,jporto,samuel,cleaning]);
     const nuno=N('nuno','Nuno Pereira','Fractional CFO','DAF',
-      ['Representa os sócios no DAF','Estratégia financeira e controlo de gestão','Supervisão de compliance fiscal','Reporting financeiro ao Board'],
-      ['EBITDA >20%','Dashboards financeiros em tempo real','Fecho de contas até dia 10'],
+      ['Representação do capital accionistas.','Estratégia financeira e controlo de gestão.','Supervisão de compliance fiscal.','Reporting financeiro ao Board.'],
+      ['EBITDA >20%.','Dashboards financeiros em tempo real.','Fecho de contas até dia 10.'],
       [bruno,teresa],{partner:true,pushDown:true});
     const datasys=N('datasys','Data & Systems Specialist','A Contratar','Hiring',
-      ['Implementação e manutenção de sistemas (Guesty, Primavera, Notion)','Automação de processos e integrações','Dashboards e reporting de dados','Sincronização de dados entre plataformas'],
-      ['100% sistemas integrados','Zero erros de sincronização','Dashboards em tempo real'],[],{hiring:true});
+      ['Implementação e manutenção de sistemas (Guesty, Primavera, Notion).','Automação de processos e integrações.','Dashboards e reporting de dados.','Sincronização de dados entre plataformas.'],
+      ['100% sistemas integrados.','Zero erros de sincronização.','Dashboards em tempo real.'],[],{hiring:true});
     const jdinis=N('jdinis','João Dinis','Reservations Manager','Reservations',
-      ['Gestão do pipeline de reservas (Guesty)','Revenue management e pricing (PriceLabs)','Otimização de canais OTA','Reporting de ocupação e revenue'],
-      ['Ocupação média >80%','RevPAN +20% vs mercado','Rating médio 4.9 stars'],[]);
+      ['Gestão do pipeline de reservas (Guesty).','Revenue management e pricing (PriceLabs).','Otimização de canais OTA.','Reporting de ocupação e revenue.'],
+      ['Ocupação média >80%.','RevPAN +20% vs mercado.','Rating médio 4.9 stars.'],[]);
     const diogo=N('diogo','Diogo Boissel','Head of Staff','Leadership',
-      ['Coordenação transversal de departamentos','Implementação de processos e OKRs','Gestão de projetos estratégicos','Suporte executivo ao CEO'],
-      ['Execução do plano anual em tempo','Reporting semanal ao CEO','Eficiência cross-departamental'],[susana,jdinis,datasys]);
+      ['Coordenação transversal de departamentos.','Implementação de processos e OKRs.','Gestão de projetos estratégicos.','Suporte executivo ao CEO.'],
+      ['Execução do plano anual em tempo.','Reporting semanal ao CEO.','Eficiência cross-departamental.'],[susana,jdinis,datasys]);
     const dlima=N('dlima','Daniel Lima','B2B Sales Manager','Commercial',
-      ['Prospeção e fecho de novos proprietários','Gestão do pipeline Pipedrive','Apresentações e propostas comerciais','Parcerias B2B'],
-      ['5+ novas propriedades/mês','Taxa de conversão >30%','Pipeline ativo >20 leads'],[]);
+      ['Prospeção e fecho de novos proprietários.','Gestão do pipeline Pipedrive.','Apresentações e propostas comerciais.','Parcerias B2B.'],
+      ['5+ novas propriedades/mês.','Taxa de conversão >30%.','Pipeline ativo >20 leads.'],[]);
     const hsales=N('hsales','Head of Sales','A Contratar','Hiring',
-      ['Liderança da equipa comercial e reservas','Estratégia de crescimento de receita','Gestão de canais B2B e OTA','Reporting comercial ao CEO'],
-      ['10+ novas propriedades onboarded/mês','Ocupação média >80%','RevPAN +20% vs mercado'],
+      ['Liderança da equipa comercial e reservas.','Estratégia de crescimento de receita.','Gestão de canais B2B e OTA.','Reporting comercial ao CEO.'],
+      ['10+ novas propriedades onboarded/mês.','Ocupação média >80%.','RevPAN +20% vs mercado.'],
       [dlima],{pushDown:true,hiring:true});
     const ricardo=N('ricardo','Ricardo Viana','CEO & Founder','Leadership',
-      ['Visão estratégica e expansão','Cultura e liderança de elite','Aquisição de propriedades próprias','Investor relations'],
-      ['Escalar para 10M em 2 anos','100+ propriedades sob gestão','Carteira imobiliária própria'],
+      ['Visão estratégica e expansão.','Cultura e liderança de elite.','Aquisição de propriedades próprias.','Relação parceiros e investidores.'],
+      ['Escalar para 10M revenue em 2 anos.','+100 propriedades premium e luxo sob gestão.'],
       [nuno,diogo,hsales],{email:'ricardo@portugalactive.pt'});
     const carlos=N('carlos','Carlos Palhares','Sócio Não Executivo','Board',
-      ['Supervisão estratégica','Governance e proteção do investimento','Conselho ao CEO'],
-      ['Retorno sobre investimento','Crescimento sustentável do EBITDA','Alinhamento estratégico'],[]);
+      ['Supervisão estratégica.','Governance e proteção do investimento.','Advisory ao CEO.'],
+      ['Retorno sobre investimento.','Crescimento sustentável do EBITDA.','Alinhamento estratégico.'],[]);
 
     let selectedId=null;
     const allNodes={};
