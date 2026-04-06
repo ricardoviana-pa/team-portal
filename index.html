@@ -193,6 +193,63 @@
 
         .pg-footer{text-align:center;padding:40px;font-size:11px;color:var(--pa-text-muted);border-top:1px solid var(--pa-border)}
 
+        /* COMPROMISSO */
+        .comp-step{display:none}
+        .comp-step.active{display:block;animation:compFadeIn 0.45s ease}
+        @keyframes compFadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+        .comp-mural{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:14px;margin-top:28px}
+        .comp-sig-card{background:var(--pa-card);border:1px solid var(--pa-border);border-radius:var(--radius-sm);padding:18px 16px;position:relative;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+        .comp-sig-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+        .comp-sig-card.tm::before{background:var(--pa-green)}
+        .comp-sig-card.mgr::before{background:var(--pa-gold)}
+        .comp-sig-name{font-size:14px;font-weight:700;margin-bottom:2px}
+        .comp-sig-level{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;font-weight:600;color:var(--pa-text-sec);margin-bottom:6px}
+        .comp-sig-date{font-size:11px;color:var(--pa-text-muted)}
+        .comp-empty{text-align:center;padding:40px 20px;color:var(--pa-text-muted);font-size:14px;font-style:italic}
+        .comp-level-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:620px;margin:0 auto}
+        .comp-level-card{background:var(--pa-card);border:2px solid var(--pa-border);border-radius:var(--radius);padding:36px 28px;text-align:center;cursor:pointer;transition:var(--ease);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+        .comp-level-card:hover{border-color:var(--pa-border-hover);transform:translateY(-4px);box-shadow:0 4px 14px rgba(0,0,0,0.1)}
+        .comp-level-card.sel{border-color:var(--pa-green);box-shadow:0 0 0 3px rgba(11,69,65,0.12)}
+        .comp-level-icon{font-size:32px;margin-bottom:14px}
+        .comp-level-title{font-size:18px;font-weight:700;letter-spacing:-0.3px;margin-bottom:8px}
+        .comp-level-desc{font-size:13px;color:var(--pa-text-sec);line-height:1.6}
+        .comp-commit-card{background:var(--pa-card);border:1px solid var(--pa-border);border-radius:var(--radius);margin-bottom:14px;overflow:hidden;transition:var(--ease);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+        .comp-commit-card.checked{border-color:rgba(11,69,65,0.25)}
+        .comp-commit-head{display:flex;align-items:flex-start;gap:16px;padding:22px 24px;cursor:pointer;transition:background 0.2s}
+        .comp-commit-head:hover{background:rgba(0,0,0,0.015)}
+        .comp-cb{width:22px;height:22px;border:2px solid var(--pa-border-hover);border-radius:6px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:var(--ease)}
+        .comp-commit-card.checked .comp-cb{background:var(--pa-green);border-color:var(--pa-green)}
+        .comp-cb svg{width:14px;height:14px;stroke:#fff;stroke-width:2.5;fill:none;opacity:0;transition:opacity 0.2s}
+        .comp-commit-card.checked .comp-cb svg{opacity:1}
+        .comp-commit-title{font-size:16px;font-weight:700;letter-spacing:-0.2px;margin-bottom:4px}
+        .comp-commit-text{font-size:14px;color:var(--pa-text-sec);line-height:1.7}
+        .comp-practice{max-height:0;overflow:hidden;transition:max-height 0.45s ease,padding 0.45s ease;padding:0 24px}
+        .comp-commit-card.checked .comp-practice{max-height:220px;padding:0 24px 22px}
+        .comp-practice-inner{background:var(--pa-bg);border-left:3px solid var(--pa-gold);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:16px 20px;font-size:13px;color:var(--pa-text-sec);line-height:1.7;font-style:italic}
+        .comp-practice-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--pa-gold);font-style:normal;margin-bottom:8px}
+        .comp-section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:var(--pa-green);margin-bottom:18px;margin-top:32px}
+        .comp-progress{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+        .comp-progress-bar{flex:1;height:6px;background:var(--pa-border);border-radius:3px;overflow:hidden}
+        .comp-progress-fill{height:100%;background:var(--pa-green);border-radius:3px;transition:width 0.4s ease}
+        .comp-progress-text{font-size:12px;font-weight:600;color:var(--pa-text-sec);white-space:nowrap}
+        .comp-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:var(--pa-green);color:#fff;border:none;border-radius:100px;font-size:14px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:var(--ease);box-shadow:0 2px 8px rgba(11,69,65,0.2)}
+        .comp-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(11,69,65,0.3)}
+        .comp-btn:disabled{opacity:0.4;cursor:not-allowed;transform:none;box-shadow:none}
+        .comp-btn-sec{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:transparent;color:var(--pa-text-sec);border:1px solid var(--pa-border);border-radius:100px;font-size:13px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:var(--ease);margin-right:12px}
+        .comp-btn-sec:hover{border-color:var(--pa-border-hover);color:var(--pa-text)}
+        .comp-sign-form{max-width:500px;margin:0 auto;text-align:center}
+        .comp-sign-input{width:100%;padding:18px 24px;border:2px solid var(--pa-border);border-radius:var(--radius-sm);font-family:'Georgia','Times New Roman',serif;font-size:24px;font-style:italic;text-align:center;color:var(--pa-text);background:var(--pa-card);transition:var(--ease);outline:none}
+        .comp-sign-input:focus{border-color:var(--pa-green);box-shadow:0 0 0 3px rgba(11,69,65,0.08)}
+        .comp-sign-input::placeholder{color:rgba(0,0,0,0.2)}
+        .comp-sign-meta{display:flex;justify-content:center;gap:24px;margin:20px 0 32px;font-size:13px;color:var(--pa-text-sec)}
+        .comp-confirm-icon{width:72px;height:72px;border-radius:50%;background:var(--pa-green);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;animation:compPop 0.5s cubic-bezier(0.175,0.885,0.32,1.275)}
+        .comp-confirm-icon svg{width:36px;height:36px;stroke:#fff;stroke-width:2.5;fill:none}
+        @keyframes compPop{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+        .comp-confirm-msg{font-size:18px;font-weight:600;text-align:center;margin-bottom:8px}
+        .comp-confirm-sub{font-size:14px;color:var(--pa-text-sec);text-align:center;margin-bottom:40px;line-height:1.7}
+        .comp-actions{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:32px}
+        @media(max-width:768px){.comp-level-grid{grid-template-columns:1fr}.comp-mural{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}}
+
         .fi{opacity:0;transform:translateY(20px);transition:all 0.6s ease}
         .fi.vis{opacity:1;transform:translateY(0)}
 
@@ -212,6 +269,7 @@
             <a href="#agenda">Agenda</a>
             <a href="#sistemas">Sistemas</a>
             <a href="#resumo">Resumo</a>
+            <a href="#compromisso">Compromisso</a>
         </div>
     </nav>
 
@@ -230,6 +288,7 @@
             <a href="#agenda" class="index-card fi"><div class="ic-num">04</div><div class="ic-title">Agenda & Reuniões</div><div class="ic-desc">Daily kick-offs, one-on-ones, town halls e reports mensais.</div><div class="ic-btn">Explorar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
             <a href="#sistemas" class="index-card fi"><div class="ic-num">05</div><div class="ic-title">Sistemas & Ferramentas</div><div class="ic-desc">Asana, Gmail, Calendar, Notion e Slack.</div><div class="ic-btn">Explorar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
             <a href="#resumo" class="index-card fi"><div class="ic-num">06</div><div class="ic-title">Resumo & Princípios</div><div class="ic-desc">Reuniões, sistemas e comunicação — os princípios que definem a nossa forma de trabalhar.</div><div class="ic-btn">Explorar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+            <a href="#compromisso" class="index-card fi"><div class="ic-num">07</div><div class="ic-title">Declaração de Compromisso</div><div class="ic-desc">Compromisso pessoal com a cultura, comportamento e standards da equipa. <span id="compCounter" class="comp-counter"></span></div><div class="ic-btn">Explorar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
         </div>
         <div class="index-footer fi">Portugal Active &bull; Abril 2026</div>
     </section>
@@ -314,6 +373,90 @@
         <div class="pg-footer">Portugal Active 2.0 &bull; Confidencial &bull; Abril 2026</div>
     </section>
 
+    <!-- 07 DECLARAÇÃO DE COMPROMISSO -->
+    <section id="compromisso">
+        <div class="sec-eyebrow fi">07 &mdash; Compromisso</div>
+        <h1 class="sec-title fi">Declaração de<br>Compromisso</h1>
+
+        <!-- STEP 1: Intro + Mural -->
+        <div class="comp-step active" id="compStep1">
+            <div class="cb fi">
+                <p>A Declaração de Compromisso é um ato pessoal e intencional. Ao assinares, estás a comprometer-te publicamente com os comportamentos e standards que definem a forma como trabalhamos na Portugal Active.</p>
+                <p style="margin-top:10px">A tua assinatura fica visível para toda a equipa. Não é um formalismo — é um pacto de confiança entre ti e quem trabalha contigo, todos os dias.</p>
+            </div>
+            <h3 class="fi" style="font-size:16px;font-weight:700;margin-top:36px;margin-bottom:4px">Mural de Compromisso</h3>
+            <p class="fi" style="font-size:13px;color:var(--pa-text-sec);margin-bottom:8px">Quem já assinou a sua declaração.</p>
+            <div class="comp-mural fi" id="compMural1"></div>
+            <div class="fi" style="text-align:center;margin-top:36px">
+                <button class="comp-btn" onclick="compGo(2)">Quero assinar o meu compromisso &#8594;</button>
+            </div>
+        </div>
+
+        <!-- STEP 2: Level Selection -->
+        <div class="comp-step" id="compStep2">
+            <div class="cb">
+                <p>Seleciona o teu nível. Os compromissos base são iguais para todos. Managers e líderes assumem compromissos adicionais de liderança.</p>
+            </div>
+            <div class="comp-level-grid" style="margin-top:32px">
+                <div class="comp-level-card" data-level="team" onclick="compSelectLevel('team')">
+                    <div class="comp-level-icon">&#9881;</div>
+                    <div class="comp-level-title">Team Member</div>
+                    <div class="comp-level-desc">Operação, execução e entrega diária.</div>
+                </div>
+                <div class="comp-level-card" data-level="manager" onclick="compSelectLevel('manager')">
+                    <div class="comp-level-icon">&#9733;</div>
+                    <div class="comp-level-title">Manager / Líder</div>
+                    <div class="comp-level-desc">Gestão de pessoas, decisões e accountability da equipa.</div>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:28px">
+                <button class="comp-btn-sec" onclick="compGo(1)">&#8592; Voltar</button>
+            </div>
+        </div>
+
+        <!-- STEP 3: Commitments -->
+        <div class="comp-step" id="compStep3">
+            <div class="comp-progress">
+                <div class="comp-progress-bar"><div class="comp-progress-fill" id="compProgressFill" style="width:0%"></div></div>
+                <div class="comp-progress-text" id="compProgressText">0/0</div>
+            </div>
+            <div id="compCommits"></div>
+            <div class="comp-actions">
+                <button class="comp-btn-sec" onclick="compGo(2)">&#8592; Voltar</button>
+                <button class="comp-btn" id="compBtnNext" disabled onclick="compGo(4)">Continuar para assinatura &#8594;</button>
+            </div>
+        </div>
+
+        <!-- STEP 4: Signature -->
+        <div class="comp-step" id="compStep4">
+            <div class="comp-sign-form">
+                <h3 style="font-size:20px;font-weight:800;letter-spacing:-0.5px;margin-bottom:8px">Assina a tua declaração</h3>
+                <p style="font-size:14px;color:var(--pa-text-sec);margin-bottom:32px;line-height:1.7">Ao assinares, confirmas que leste e te comprometes com cada um dos pontos acima.</p>
+                <input type="text" class="comp-sign-input" id="compSignName" placeholder="O teu nome completo" autocomplete="off">
+                <div class="comp-sign-meta">
+                    <span id="compSignDate"></span>
+                    <span id="compSignLevel"></span>
+                    <span id="compSignCount"></span>
+                </div>
+                <div class="comp-actions">
+                    <button class="comp-btn-sec" onclick="compGo(3)">&#8592; Voltar</button>
+                    <button class="comp-btn" id="compBtnSign" onclick="compSign()">Assinar declaração</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 5: Confirmation -->
+        <div class="comp-step" id="compStep5">
+            <div style="max-width:560px;margin:0 auto;padding-top:40px">
+                <div class="comp-confirm-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="comp-confirm-msg"><span id="compConfirmName"></span>, obrigado.</div>
+                <div class="comp-confirm-sub">A tua assinatura está visível para toda a equipa. A partir de hoje, estes são os teus standards. Vive-os. Todos os dias.</div>
+                <h3 style="font-size:16px;font-weight:700;margin-bottom:12px;text-align:center">Mural de Compromisso</h3>
+                <div class="comp-mural" id="compMural5"></div>
+            </div>
+        </div>
+    </section>
+
     <script>
     /* Scroll reveal + sticky nav */
     const obs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:0.1});
@@ -322,7 +465,7 @@
     const indexSection=document.getElementById('index');
     window.addEventListener('scroll',()=>{
         stickyNav.classList.toggle('visible',window.scrollY>indexSection.offsetHeight-100);
-        const secs=['intro','missao','organograma','agenda','sistemas','resumo'];
+        const secs=['intro','missao','organograma','agenda','sistemas','resumo','compromisso'];
         let cur='';secs.forEach(id=>{const s=document.getElementById(id);if(s&&s.getBoundingClientRect().top<200)cur=id});
         stickyNav.querySelectorAll('a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
     });
@@ -551,6 +694,113 @@
 
     /* INIT */
     renderTree();window.addEventListener('resize',()=>{renderTree()});
+
+    /* ===== COMPROMISSO ===== */
+    const COMP_API=null;
+    const COMP_TEAM=[
+      {title:'Ownership Total',text:'Se vejo um problema, resolvo-o ou escalo-o imediatamente. Nunca digo \u201Cisso n\u00e3o \u00e9 comigo\u201D. Se est\u00e1 nas minhas m\u00e3os, \u00e9 minha responsabilidade do in\u00edcio ao fim.',practice:'Um h\u00f3spede reporta uma torneira a pingar. Mesmo que manuten\u00e7\u00e3o n\u00e3o seja a minha \u00e1rea, n\u00e3o ignoro \u2014 registo, comunico ao respons\u00e1vel e confirmo que foi resolvido.'},
+      {title:'Tempo de Resposta',text:'Respondo a mensagens de h\u00f3spedes em menos de 15 minutos durante o hor\u00e1rio de opera\u00e7\u00e3o. Mensagens internas da equipa s\u00e3o respondidas no mesmo dia. Sil\u00eancio n\u00e3o \u00e9 resposta.',practice:'Recebo uma mensagem no Slack \u00e0s 14h sobre uma altera\u00e7\u00e3o de check-in. Mesmo que n\u00e3o tenha a resposta final, confirmo que vi e dou um prazo: \u201CVi, confirmo at\u00e9 \u00e0s 16h.\u201D'},
+      {title:'Excel\u00eancia no Detalhe',text:'Verifico o meu trabalho antes de o dar como terminado. Cada propriedade, cada email, cada intera\u00e7\u00e3o com o h\u00f3spede reflete o padr\u00e3o cinco estrelas da marca.',practice:'Antes de confirmar um check-in pronto, passo pela propriedade como se fosse o h\u00f3spede: porta de entrada, toalhas, temperatura, WiFi, amenities. Se eu n\u00e3o ficaria satisfeito, n\u00e3o est\u00e1 pronto.'},
+      {title:'Transpar\u00eancia Radical',text:'Comunico erros e problemas assim que os deteto \u2014 sem esconder, sem minimizar, sem esperar que algu\u00e9m descubra. M\u00e1s not\u00edcias cedo s\u00e3o melhores que surpresas tarde.',practice:'Parti um objeto numa propriedade durante a prepara\u00e7\u00e3o. N\u00e3o tapo \u2014 reporto imediatamente ao manager, documento com foto e proponho solu\u00e7\u00e3o.'},
+      {title:'Disciplina de Sistemas',text:'Registo tudo no sistema correto (Asana, Notion, Guesty). Se n\u00e3o est\u00e1 registado, n\u00e3o aconteceu. N\u00e3o uso atalhos que s\u00f3 eu entendo.',practice:'Termino uma tarefa de manuten\u00e7\u00e3o. N\u00e3o mando s\u00f3 uma mensagem no WhatsApp \u2014 fecho a task no Asana com nota do que foi feito, quando e por quem.'},
+      {title:'Mentalidade de Crescimento',text:'Aceito feedback sem defensividade. Questiono processos que n\u00e3o fazem sentido. Proponho melhorias em vez de me queixar. Todos os dias s\u00e3o uma oportunidade de ser melhor.',practice:'O meu manager diz que o meu relat\u00f3rio mensal est\u00e1 incompleto. Em vez de justificar, pergunto: \u201CO que faltou? Como posso melhorar o pr\u00f3ximo?\u201D'}
+    ];
+    const COMP_LEAD=[
+      {title:'Liderar pelo Exemplo',text:'Sou o primeiro a cumprir os standards que exijo. A minha equipa n\u00e3o faz o que eu digo \u2014 faz o que eu fa\u00e7o. Se pe\u00e7o pontualidade, sou pontual. Se pe\u00e7o ownership, n\u00e3o delego passivamente.',practice:'N\u00e3o pe\u00e7o \u00e0 equipa para usar o Asana se eu pr\u00f3prio comunico tarefas por WhatsApp. O meu comportamento \u00e9 o manual de cultura vivo.'},
+      {title:'Desenvolver Pessoas',text:'Cada one-on-one \u00e9 uma oportunidade de fazer crescer algu\u00e9m. Dou feedback espec\u00edfico, acion\u00e1vel e no momento certo \u2014 n\u00e3o acumulo para avalia\u00e7\u00f5es anuais.',practice:'Em vez de dizer \u201Ctens de melhorar a comunica\u00e7\u00e3o\u201D, digo: \u201CNo email de ontem ao propriet\u00e1rio, faltou o contexto da situa\u00e7\u00e3o. Da pr\u00f3xima vez, inclui um resumo na primeira linha.\u201D'},
+      {title:'Accountability sem Microgest\u00e3o',text:'Defino expectativas claras e confio na execu\u00e7\u00e3o. N\u00e3o controlo cada passo \u2014 controlo resultados. Mas quando os resultados ficam abaixo, atuo rapidamente e com clareza.',practice:'N\u00e3o verifico se algu\u00e9m chegou \u00e0s 9h \u2014 verifico se as tarefas do dia est\u00e3o fechadas com qualidade. Se n\u00e3o est\u00e3o, tenho a conversa dif\u00edcil sem a adiar.'}
+    ];
+
+    let compStep=1,compLevel=null,compChecked=new Set();
+    let compSigs=JSON.parse(localStorage.getItem('pa_comp_sigs')||'[]');
+    if(COMP_API){fetch(COMP_API).then(r=>r.json()).then(d=>{compSigs=d;localStorage.setItem('pa_comp_sigs',JSON.stringify(d));compRenderMural()}).catch(()=>{})}
+
+    function compGo(n){
+      const cur=document.getElementById('compStep'+compStep);
+      const nxt=document.getElementById('compStep'+n);
+      cur.classList.remove('active');
+      setTimeout(()=>{
+        cur.style.display='none';
+        nxt.style.display='block';
+        requestAnimationFrame(()=>{nxt.classList.add('active')});
+        compStep=n;
+        if(n===3)compRenderCommits();
+        if(n===4)compPrepSign();
+        if(n===1||n===5)compRenderMural();
+        document.getElementById('compromisso').scrollIntoView({behavior:'smooth',block:'start'});
+      },300);
+    }
+
+    function compSelectLevel(lv){
+      compLevel=lv;
+      document.querySelectorAll('.comp-level-card').forEach(c=>c.classList.toggle('sel',c.dataset.level===lv));
+      setTimeout(()=>compGo(3),350);
+    }
+
+    function compRenderCommits(){
+      const items=compLevel==='manager'?[...COMP_TEAM,...COMP_LEAD]:[...COMP_TEAM];
+      const total=items.length;
+      compChecked.clear();
+      let h='';
+      if(compLevel==='manager')h+='<div class="comp-section-label">Compromissos de Equipa</div>';
+      items.forEach((c,i)=>{
+        if(compLevel==='manager'&&i===COMP_TEAM.length)h+='<div class="comp-section-label" style="margin-top:28px">Compromissos de Lideran\u00e7a</div>';
+        h+='<div class="comp-commit-card" data-idx="'+i+'" onclick="compToggle('+i+')"><div class="comp-commit-head"><div class="comp-cb"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="comp-commit-title">'+c.title+'</div><div class="comp-commit-text">'+c.text+'</div></div></div><div class="comp-practice"><div class="comp-practice-inner"><div class="comp-practice-label">Na pr\u00e1tica</div>'+c.practice+'</div></div></div>';
+      });
+      document.getElementById('compCommits').innerHTML=h;
+      compUpdateProgress();
+    }
+
+    function compToggle(idx){
+      if(compChecked.has(idx))compChecked.delete(idx);else compChecked.add(idx);
+      const card=document.querySelector('.comp-commit-card[data-idx="'+idx+'"]');
+      card.classList.toggle('checked',compChecked.has(idx));
+      compUpdateProgress();
+    }
+
+    function compUpdateProgress(){
+      const total=compLevel==='manager'?COMP_TEAM.length+COMP_LEAD.length:COMP_TEAM.length;
+      const done=compChecked.size;
+      document.getElementById('compProgressFill').style.width=Math.round(done/total*100)+'%';
+      document.getElementById('compProgressText').textContent=done+'/'+total;
+      document.getElementById('compBtnNext').disabled=done<total;
+    }
+
+    function compPrepSign(){
+      const total=compLevel==='manager'?COMP_TEAM.length+COMP_LEAD.length:COMP_TEAM.length;
+      const today=new Date().toISOString().split('T')[0];
+      document.getElementById('compSignDate').textContent='Data: '+today;
+      document.getElementById('compSignLevel').textContent='N\u00edvel: '+(compLevel==='manager'?'Manager / L\u00edder':'Team Member');
+      document.getElementById('compSignCount').textContent=total+' compromissos';
+      document.getElementById('compSignName').value='';
+      document.getElementById('compSignName').focus();
+    }
+
+    function compSign(){
+      const name=document.getElementById('compSignName').value.trim();
+      if(!name){document.getElementById('compSignName').focus();return}
+      const total=compLevel==='manager'?COMP_TEAM.length+COMP_LEAD.length:COMP_TEAM.length;
+      const sig={name:name,level:compLevel,date:new Date().toISOString().split('T')[0],count:total};
+      compSigs.push(sig);
+      localStorage.setItem('pa_comp_sigs',JSON.stringify(compSigs));
+      if(COMP_API){fetch(COMP_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(sig)}).catch(()=>{})}
+      document.getElementById('compConfirmName').textContent=name;
+      compGo(5);
+    }
+
+    function compRenderMural(){
+      ['compMural1','compMural5'].forEach(function(mid){
+        var el=document.getElementById(mid);
+        if(!el)return;
+        if(!compSigs.length){el.innerHTML='<div class="comp-empty">Ainda ningu\u00e9m assinou. S\u00ea o primeiro.</div>';return}
+        el.innerHTML=compSigs.map(function(s){return '<div class="comp-sig-card '+(s.level==='manager'?'mgr':'tm')+'"><div class="comp-sig-name">'+s.name+'</div><div class="comp-sig-level">'+(s.level==='manager'?'Manager / L\u00edder':'Team Member')+'</div><div class="comp-sig-date">'+s.date+' &middot; '+s.count+' compromissos</div></div>'}).join('');
+      });
+      var counter=document.getElementById('compCounter');
+      if(counter&&compSigs.length)counter.textContent=compSigs.length+' assinatura'+(compSigs.length!==1?'s':'');
+    }
+
+    document.querySelectorAll('#compromisso .fi').forEach(function(el){obs.observe(el)});
+    compRenderMural();
     </script>
 </body>
 </html>
